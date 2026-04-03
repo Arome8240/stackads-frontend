@@ -1,0 +1,170 @@
+export type CampaignStatus = "Active" | "Paused" | "Completed";
+
+export interface Campaign {
+  id: string;
+  name: string;
+  status: CampaignStatus;
+  budget: number;
+  spent: number;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+  startDate: string;
+  endDate: string;
+  format: "Banner" | "Native" | "Video";
+}
+
+export interface Transaction {
+  id: string;
+  type: "Deposit" | "Spend" | "Refund";
+  amount: number;
+  date: string;
+  description: string;
+  txHash: string;
+}
+
+export interface AnalyticsPoint {
+  date: string;
+  impressions: number;
+  clicks: number;
+  spend: number;
+}
+
+export const campaigns: Campaign[] = [
+  {
+    id: "c1",
+    name: "Stacks DeFi Launch",
+    status: "Active",
+    budget: 5000,
+    spent: 2340,
+    impressions: 480000,
+    clicks: 18200,
+    ctr: 3.79,
+    startDate: "2026-03-01",
+    endDate: "2026-04-30",
+    format: "Banner",
+  },
+  {
+    id: "c2",
+    name: "NFT Marketplace Promo",
+    status: "Active",
+    budget: 3000,
+    spent: 1890,
+    impressions: 320000,
+    clicks: 11400,
+    ctr: 3.56,
+    startDate: "2026-03-10",
+    endDate: "2026-04-10",
+    format: "Native",
+  },
+  {
+    id: "c3",
+    name: "Web3 Wallet Awareness",
+    status: "Paused",
+    budget: 2000,
+    spent: 980,
+    impressions: 195000,
+    clicks: 6800,
+    ctr: 3.49,
+    startDate: "2026-02-15",
+    endDate: "2026-03-31",
+    format: "Video",
+  },
+  {
+    id: "c4",
+    name: "StackAds Publisher Drive",
+    status: "Completed",
+    budget: 4500,
+    spent: 4500,
+    impressions: 210000,
+    clicks: 8600,
+    ctr: 4.1,
+    startDate: "2026-01-01",
+    endDate: "2026-02-28",
+    format: "Banner",
+  },
+  {
+    id: "c5",
+    name: "Bitcoin Halving Campaign",
+    status: "Active",
+    budget: 6000,
+    spent: 740,
+    impressions: 95000,
+    clicks: 3800,
+    ctr: 4.0,
+    startDate: "2026-04-01",
+    endDate: "2026-05-15",
+    format: "Native",
+  },
+];
+
+export const transactions: Transaction[] = [
+  {
+    id: "t1",
+    type: "Deposit",
+    amount: 5000,
+    date: "2026-03-28",
+    description: "Wallet top-up",
+    txHash: "0x4f2a...9c1e",
+  },
+  {
+    id: "t2",
+    type: "Spend",
+    amount: -340,
+    date: "2026-03-27",
+    description: "Stacks DeFi Launch — daily spend",
+    txHash: "0x8b3c...2d4f",
+  },
+  {
+    id: "t3",
+    type: "Spend",
+    amount: -210,
+    date: "2026-03-26",
+    description: "NFT Marketplace Promo — daily spend",
+    txHash: "0x1e9d...7a2b",
+  },
+  {
+    id: "t4",
+    type: "Refund",
+    amount: 120,
+    date: "2026-03-25",
+    description: "Web3 Wallet Awareness — paused refund",
+    txHash: "0x6c7e...3f1a",
+  },
+  {
+    id: "t5",
+    type: "Deposit",
+    amount: 2000,
+    date: "2026-03-20",
+    description: "Wallet top-up",
+    txHash: "0x9a1b...5e8c",
+  },
+  {
+    id: "t6",
+    type: "Spend",
+    amount: -430,
+    date: "2026-03-19",
+    description: "StackAds Publisher Drive — final spend",
+    txHash: "0x3d5f...8b2e",
+  },
+];
+
+export const analyticsData: AnalyticsPoint[] = [
+  { date: "Mar 1", impressions: 28000, clicks: 980, spend: 120 },
+  { date: "Mar 5", impressions: 42000, clicks: 1540, spend: 185 },
+  { date: "Mar 9", impressions: 38000, clicks: 1320, spend: 160 },
+  { date: "Mar 13", impressions: 55000, clicks: 2100, spend: 240 },
+  { date: "Mar 17", impressions: 61000, clicks: 2380, spend: 275 },
+  { date: "Mar 21", impressions: 74000, clicks: 2950, spend: 320 },
+  { date: "Mar 25", impressions: 68000, clicks: 2640, spend: 295 },
+  { date: "Mar 29", impressions: 82000, clicks: 3200, spend: 360 },
+  { date: "Apr 2", impressions: 91000, clicks: 3580, spend: 410 },
+  { date: "Apr 3", impressions: 95000, clicks: 3800, spend: 430 },
+];
+
+export const overviewMetrics = {
+  totalSpend: 12450,
+  impressions: 1200000,
+  clicks: 45000,
+  ctr: 3.75,
+};
