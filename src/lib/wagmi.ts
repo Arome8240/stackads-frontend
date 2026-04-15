@@ -1,0 +1,14 @@
+import { createConfig, http } from "wagmi";
+import { celo, celoAlfajores } from "wagmi/chains";
+import { injected } from "wagmi/connectors";
+
+export const wagmiConfig = createConfig({
+  chains: [celo, celoAlfajores],
+  connectors: [
+    injected({ target: "metaMask" }), // MiniPay injects as window.ethereum
+  ],
+  transports: {
+    [celo.id]: http(),
+    [celoAlfajores.id]: http(),
+  },
+});
