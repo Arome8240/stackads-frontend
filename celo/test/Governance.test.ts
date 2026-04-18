@@ -11,13 +11,14 @@ describe("Governance", () => {
   let proposer: HardhatEthersSigner;
   let voter1: HardhatEthersSigner;
   let voter2: HardhatEthersSigner;
+  let other: HardhatEthersSigner;
 
   const THRESHOLD = ethers.parseEther("10000");
   const QUORUM = ethers.parseEther("100000");
   const VOTING_PERIOD = 50400n;
 
   beforeEach(async () => {
-    [owner, proposer, voter1, voter2] = await ethers.getSigners();
+    [owner, proposer, voter1, voter2, other] = await ethers.getSigners();
 
     const TokenFactory = await ethers.getContractFactory("ER2o");
     token = (await TokenFactory.deploy(owner.address, 10_000_000)) as ER2o;
@@ -80,8 +81,9 @@ describe("Governance", () => {
 
     it("reverts below threshold", async () => {
       const callData = "0x";
+      // other has no tokens — below threshold
       await expect(
-        gov.connect(voter1).propose(await gov.getAddress(), callData, "Test"),
+        gov.connect(other).propose(await gov.getAddress(), callData, "Test"),
       ).to.be.revertedWith("Governance: below proposal threshold");
     });
 
@@ -191,6 +193,9 @@ describe("Governance", () => {
 
   describe("execute", () => {
     it("executes a passed proposal after timelock", async () => {
+      // Transfer gov ownership to itself so the proposal can call setVotingPeriod
+      await gov.transferOwnership(await gov.getAddress());
+
       const proposalId = await createProposal();
       await mine(2);
       await gov.connect(voter1).castVote(proposalId, 1);
