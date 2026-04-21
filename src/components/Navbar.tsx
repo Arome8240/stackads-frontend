@@ -2,13 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HambergerMenu, CloseCircle } from "iconsax-react";
-
-const links = [
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Who It's For", href: "#for-who" },
-  { label: "Docs", href: "#" },
-];
+import { NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
