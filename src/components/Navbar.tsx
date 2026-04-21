@@ -95,7 +95,7 @@ export default function Navbar() {
               key={l.label}
               href={l.href}
               className="text-sm text-white/70 hover:text-white transition-colors"
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
             >
               {l.label}
             </a>
