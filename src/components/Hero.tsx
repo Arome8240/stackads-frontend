@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "iconsax-react";
 import { fadeUp } from "@/lib/animations";
-import RevenueCard from "./RevenueCard";
-import OnChainBadge from "./OnChainBadge";
+import RevenueCard from "./features/RevenueCard";
+import OnChainBadge from "./features/OnChainBadge";
 
 export default function Hero() {
   return (
