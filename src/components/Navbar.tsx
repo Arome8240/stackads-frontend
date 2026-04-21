@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { HambergerMenu, CloseCircle } from "iconsax-react";
 import { NAV_LINKS } from "@/lib/constants";
@@ -12,6 +12,14 @@ export default function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
   }, []);
 
   return (
@@ -64,7 +72,7 @@ export default function Navbar() {
         {/* Mobile menu toggle */}
         <button
           className="md:hidden text-white/70 hover:text-white"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={toggleMenu}
           aria-label="Toggle menu"
         >
           {menuOpen ? (
