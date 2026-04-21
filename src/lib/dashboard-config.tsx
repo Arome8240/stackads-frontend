@@ -37,6 +37,6 @@ export const dashboardMetrics = [
 ];
 
 export const performanceChartLines = [
-  { key: "impressions", color: "#a855f7", label: "Impressions" },
-  { key: "clicks", color: "#f7931a", label: "Clicks" },
-] as const;
+  { key: "impressions" as const, color: "#a855f7", label: "Impressions" },
+  { key: "clicks" as const, color: "#f7931a", label: "Clicks" },
+];

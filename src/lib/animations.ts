@@ -60,7 +60,7 @@ export const floating = (distance = 8, duration = 3) => ({
   animate: { y: [0, -distance, 0] },
   transition: {
     duration,
-    repeat: Infinity,
-    ease: "easeInOut",
+    repeat: Infinity as number,
+    ease: "easeInOut" as const,
   },
 });

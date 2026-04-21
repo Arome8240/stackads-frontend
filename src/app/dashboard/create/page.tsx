@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { DocumentUpload, Send } from "iconsax-react";
 import Toast from "@/components/dashboard/Toast";
-import type { ToastType } from "@/components/dashboard/Toast";
+import type { ToastType } from "@/types";
 
 const formats = ["Banner", "Native", "Video"];
 const audiences = [

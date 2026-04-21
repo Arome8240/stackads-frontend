@@ -5,6 +5,8 @@ import { TickCircle, CloseCircle, InfoCircle, Warning2 } from "iconsax-react";
 import type { ToastType } from "@/types";
 import { TOAST_DURATION } from "@/lib/constants";
 
+export type { ToastType };
+
 interface ToastProps {
   message: string;
   type: ToastType;
@@ -13,7 +15,7 @@ interface ToastProps {
 
 const config: Record<
   ToastType,
-  { icon: JSX.Element; border: string; text: string }
+  { icon: React.ReactElement; border: string; text: string }
 > = {
   success: {
     icon: <TickCircle size={18} color="#4ade80" variant="Bold" />,

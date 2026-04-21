@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import type { AnalyticsPoint } from "@/lib/mock-data";
+import type { AnalyticsPoint } from "@/types";
 
 interface Props {
   data: AnalyticsPoint[];

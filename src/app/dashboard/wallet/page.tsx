@@ -9,7 +9,7 @@ import {
   WalletAdd,
 } from "iconsax-react";
 import Toast from "@/components/dashboard/Toast";
-import type { ToastType } from "@/components/dashboard/Toast";
+import type { ToastType } from "@/types";
 import { transactions } from "@/lib/mock-data";
 
 const typeStyles = {
