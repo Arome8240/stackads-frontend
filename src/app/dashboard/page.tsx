@@ -70,13 +70,7 @@ export default function DashboardPage() {
             Mar 1 – Apr 3
           </span>
         </div>
-        <PerformanceChart
-          data={analyticsData}
-          lines={[
-            { key: "impressions", color: "#a855f7", label: "Impressions" },
-            { key: "clicks", color: "#f7931a", label: "Clicks" },
-          ]}
-        />
+        <PerformanceChart data={analyticsData} lines={performanceChartLines} />
       </motion.div>
 
       {/* Recent campaigns */}
