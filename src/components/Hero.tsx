@@ -118,8 +118,7 @@ ads.display('#ad-container', {
           </motion.div>
           {/* Floating on-chain badge */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+            {...floating(-8, 3.5)}
             className="absolute -bottom-4 -left-4 glass rounded-xl px-4 py-3 border border-[#a855f7]/30 hidden sm:block"
           >
             <div className="text-xs text-white/50 mb-0.5">
