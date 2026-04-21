@@ -9,10 +9,12 @@ import {
   PauseCircle,
   SearchNormal1,
 } from "iconsax-react";
-import StatusBadge from "@/components/dashboard/StatusBadge";
+import CampaignTable from "@/components/dashboard/CampaignTable";
 import Toast from "@/components/dashboard/Toast";
 import type { ToastType } from "@/components/dashboard/Toast";
 import { campaigns } from "@/lib/mock-data";
+import { useSearch } from "@/hooks/useSearch";
+import { useToast } from "@/hooks/useToast";
 
 export default function CampaignsPage() {
   const [search, setSearch] = useState("");
