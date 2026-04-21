@@ -34,7 +34,7 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8 text-sm text-white/60">
-          {links.map((l) => (
+          {NAV_LINKS.map((l) => (
             <a
               key={l.label}
               href={l.href}
@@ -82,7 +82,7 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden glass border-t border-white/10 px-6 py-4 flex flex-col gap-4"
         >
-          {links.map((l) => (
+          {NAV_LINKS.map((l) => (
             <a
               key={l.label}
               href={l.href}
