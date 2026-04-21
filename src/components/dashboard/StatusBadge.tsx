@@ -1,4 +1,5 @@
-import type { CampaignStatus } from "@/lib/mock-data";
+import { memo } from "react";
+import type { CampaignStatus } from "@/types";
 
 const styles: Record<CampaignStatus, string> = {
   Active: "bg-[#4ade80]/10 text-[#4ade80] border-[#4ade80]/20",
