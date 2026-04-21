@@ -1,34 +1,9 @@
-export type CampaignStatus = "Active" | "Paused" | "Completed";
-
-export interface Campaign {
-  id: string;
-  name: string;
-  status: CampaignStatus;
-  budget: number;
-  spent: number;
-  impressions: number;
-  clicks: number;
-  ctr: number;
-  startDate: string;
-  endDate: string;
-  format: "Banner" | "Native" | "Video";
-}
-
-export interface Transaction {
-  id: string;
-  type: "Deposit" | "Spend" | "Refund";
-  amount: number;
-  date: string;
-  description: string;
-  txHash: string;
-}
-
-export interface AnalyticsPoint {
-  date: string;
-  impressions: number;
-  clicks: number;
-  spend: number;
-}
+import type {
+  Campaign,
+  Transaction,
+  AnalyticsPoint,
+  OverviewMetrics,
+} from "@/types";
 
 export const campaigns: Campaign[] = [
   {
