@@ -1,9 +1,9 @@
 "use client";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { TickCircle, CloseCircle, InfoCircle } from "iconsax-react";
-
-export type ToastType = "success" | "error" | "info";
+import { TickCircle, CloseCircle, InfoCircle, Warning2 } from "iconsax-react";
+import type { ToastType } from "@/types";
+import { TOAST_DURATION } from "@/lib/constants";
 
 interface ToastProps {
   message: string;
@@ -11,7 +11,10 @@ interface ToastProps {
   onClose: () => void;
 }
 
-const config = {
+const config: Record<
+  ToastType,
+  { icon: JSX.Element; border: string; text: string }
+> = {
   success: {
     icon: <TickCircle size={18} color="#4ade80" variant="Bold" />,
     border: "border-[#4ade80]/20",
@@ -26,6 +29,11 @@ const config = {
     icon: <InfoCircle size={18} color="#a855f7" variant="Bold" />,
     border: "border-[#a855f7]/20",
     text: "text-[#a855f7]",
+  },
+  warning: {
+    icon: <Warning2 size={18} color="#fbbf24" variant="Bold" />,
+    border: "border-[#fbbf24]/20",
+    text: "text-[#fbbf24]",
   },
 };
 
