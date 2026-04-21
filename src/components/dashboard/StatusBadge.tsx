@@ -13,7 +13,7 @@ const dots: Record<CampaignStatus, string> = {
   Completed: "bg-white/30",
 };
 
-export default function StatusBadge({ status }: { status: CampaignStatus }) {
+function StatusBadge({ status }: { status: CampaignStatus }) {
   return (
     <span
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${styles[status]}`}
@@ -23,3 +23,5 @@ export default function StatusBadge({ status }: { status: CampaignStatus }) {
     </span>
   );
 }
+
+export default memo(StatusBadge);

@@ -55,3 +55,5 @@ function MetricCard({
     </motion.div>
   );
 }
+
+export default memo(MetricCard);
