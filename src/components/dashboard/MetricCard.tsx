@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { TrendUp, TrendDown } from "iconsax-react";
+import { memo } from "react";
 
 interface MetricCardProps {
   title: string;
@@ -12,7 +13,7 @@ interface MetricCardProps {
   delay?: number;
 }
 
-export default function MetricCard({
+function MetricCard({
   title,
   value,
   change,
