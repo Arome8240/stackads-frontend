@@ -39,7 +39,7 @@ const config: Record<
 
 export default function Toast({ message, type, onClose }: ToastProps) {
   useEffect(() => {
-    const t = setTimeout(onClose, 3500);
+    const t = setTimeout(onClose, TOAST_DURATION);
     return () => clearTimeout(t);
   }, [onClose]);
 
