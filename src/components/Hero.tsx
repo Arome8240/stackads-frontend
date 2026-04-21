@@ -1,13 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "iconsax-react";
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, delay },
-});
+import { fadeUp, floating } from "@/lib/animations";
 
 export default function Hero() {
   return (
@@ -114,8 +108,7 @@ ads.display('#ad-container', {
           </div>
           {/* Floating revenue card */}
           <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            {...floating(8, 3)}
             className="absolute -top-4 -right-4 glass rounded-xl px-4 py-3 border border-[#f7931a]/30 hidden sm:block"
           >
             <div className="text-xs text-white/50 mb-0.5">
