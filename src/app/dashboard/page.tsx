@@ -47,7 +47,7 @@ export default function DashboardPage() {
     <div className="flex flex-col gap-6 max-w-7xl mx-auto">
       {/* Metric cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {metrics.map((m, i) => (
+        {dashboardMetrics.map((m, i) => (
           <MetricCard key={m.title} {...m} delay={i * 0.08} />
         ))}
       </div>
