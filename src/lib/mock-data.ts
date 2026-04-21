@@ -137,7 +137,7 @@ export const analyticsData: AnalyticsPoint[] = [
   { date: "Apr 3", impressions: 95000, clicks: 3800, spend: 430 },
 ];
 
-export const overviewMetrics = {
+export const overviewMetrics: OverviewMetrics = {
   totalSpend: 12450,
   impressions: 1200000,
   clicks: 45000,
