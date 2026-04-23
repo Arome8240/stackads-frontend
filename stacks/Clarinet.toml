@@ -29,6 +29,22 @@ depends_on = ["stackads-token"]
 path = "contracts/vesting.clar"
 depends_on = ["stackads-token"]
 
+[contracts.campaign-manager]
+path = "contracts/campaign-manager.clar"
+depends_on = ["stackads-token", "ad-registry", "ad-treasury"]
+
+[contracts.ad-verification]
+path = "contracts/ad-verification.clar"
+depends_on = ["ad-registry"]
+
+[contracts.dispute-resolution]
+path = "contracts/dispute-resolution.clar"
+depends_on = ["ad-registry", "ad-treasury"]
+
+[contracts.referral-system]
+path = "contracts/referral-system.clar"
+depends_on = ["stackads-token"]
+
 [repl.analysis]
 passes = ["check_checker"]
 

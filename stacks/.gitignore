@@ -1,0 +1,27 @@
+# Clarinet
+.cache/
+settings/
+deployments/
+costs-reports.txt
+
+# Node
+node_modules/
+*.log
+
+# Test coverage
+coverage/
+
+# Build
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
