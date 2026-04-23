@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useStacks } from "@/providers/StacksProvider";
 import {
   Notification,
   SearchNormal1,
@@ -13,24 +14,25 @@ import {
   HambergerMenu,
   CloseCircle,
   LogoutCurve,
+  Wallet3,
 } from "iconsax-react";
 
 const navItems = [
-  { label: "Overview", href: "/dashboard", icon: <Home2 size={20} /> },
+  { label: "Dashboard Home", href: "/dashboard", icon: <Home2 size={20} /> },
   {
-    label: "Campaigns",
-    href: "/dashboard/campaigns",
+    label: "Publisher",
+    href: "/dashboard/publisher",
     icon: <Chart size={20} />,
   },
   {
-    label: "Create Campaign",
-    href: "/dashboard/create",
-    icon: <AddCircle size={20} />,
+    label: "Advertiser",
+    href: "/dashboard/advertiser",
+    icon: <PresentionChart size={20} />,
   },
   {
-    label: "Analytics",
-    href: "/dashboard/analytics",
-    icon: <PresentionChart size={20} />,
+    label: "Admin",
+    href: "/dashboard/admin",
+    icon: <AddCircle size={20} />,
   },
   {
     label: "Wallet",
@@ -40,7 +42,10 @@ const navItems = [
 ];
 
 const pageTitles: Record<string, string> = {
-  "/dashboard": "Overview",
+  "/dashboard": "Dashboard",
+  "/dashboard/publisher": "Publisher Dashboard",
+  "/dashboard/advertiser": "Advertiser Dashboard",
+  "/dashboard/admin": "Admin Dashboard",
   "/dashboard/campaigns": "Campaigns",
   "/dashboard/create": "Create Campaign",
   "/dashboard/analytics": "Analytics",
@@ -50,6 +55,11 @@ const pageTitles: Record<string, string> = {
 export default function DashboardNav() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isConnected, address, connect, disconnect } = useStacks();
+
+  const formatAddress = (addr: string) => {
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+  };
 
   return (
     <>
@@ -77,13 +87,34 @@ export default function DashboardNav() {
             <Notification size={16} color="#f7931a" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#f7931a]" />
           </button>
+          
+          {/* Wallet Connection */}
           <div className="flex items-center gap-2 pl-2 border-l border-white/10">
-            <div className="w-8 h-8 rounded-full bg-linear-to-br from-[#f7931a] to-[#a855f7] flex items-center justify-center text-xs font-bold text-white">
-              A
-            </div>
-            <span className="hidden sm:block text-sm font-medium text-white/70">
-              Advertiser
-            </span>
+            {isConnected && address ? (
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-linear-to-br from-[#f7931a] to-[#a855f7] flex items-center justify-center text-xs font-bold text-white">
+                  {address[0]}
+                </div>
+                <span className="hidden sm:block text-sm font-medium text-white/70 font-mono">
+                  {formatAddress(address)}
+                </span>
+                <button
+                  onClick={disconnect}
+                  className="hidden sm:block text-xs text-white/40 hover:text-white/60 transition-colors"
+                  title="Disconnect"
+                >
+                  <LogoutCurve size={16} />
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={connect}
+                className="px-4 py-2 bg-[#f7931a] text-white rounded-lg hover:bg-[#f7931a]/90 transition-colors text-sm font-medium flex items-center gap-2"
+              >
+                <Wallet3 size={16} />
+                <span className="hidden sm:inline">Connect Wallet</span>
+              </button>
+            )}
           </div>
         </div>
       </header>

@@ -11,21 +11,21 @@ import {
 } from "iconsax-react";
 
 const navItems = [
-  { label: "Overview", href: "/dashboard", icon: <Home2 size={20} /> },
+  { label: "Dashboard Home", href: "/dashboard", icon: <Home2 size={20} /> },
   {
-    label: "Campaigns",
-    href: "/dashboard/campaigns",
+    label: "Publisher",
+    href: "/dashboard/publisher",
     icon: <Chart size={20} />,
   },
   {
-    label: "Create Campaign",
-    href: "/dashboard/create",
-    icon: <AddCircle size={20} />,
+    label: "Advertiser",
+    href: "/dashboard/advertiser",
+    icon: <PresentionChart size={20} />,
   },
   {
-    label: "Analytics",
-    href: "/dashboard/analytics",
-    icon: <PresentionChart size={20} />,
+    label: "Admin",
+    href: "/dashboard/admin",
+    icon: <AddCircle size={20} />,
   },
   {
     label: "Wallet",
