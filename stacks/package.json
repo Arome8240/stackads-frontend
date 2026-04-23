@@ -1,0 +1,21 @@
+{
+  "name": "stackads-stacks-contracts",
+  "version": "1.0.0",
+  "description": "StackAds smart contracts on Stacks blockchain",
+  "scripts": {
+    "check": "clarinet check",
+    "test": "clarinet test",
+    "deploy:testnet": "clarinet deploy --testnet",
+    "deploy:mainnet": "clarinet deploy --mainnet",
+    "console": "clarinet console"
+  },
+  "keywords": [
+    "stacks",
+    "clarity",
+    "smart-contracts",
+    "stackads"
+  ],
+  "devDependencies": {
+    "@hirosystems/clarinet-sdk": "^2.0.0"
+  }
+}

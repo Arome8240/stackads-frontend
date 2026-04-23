@@ -1,0 +1,39 @@
+[project]
+name = "stackads"
+description = "StackAds decentralized ad network on Stacks"
+authors = ["StackAds Team"]
+telemetry = false
+cache_dir = ".cache"
+requirements = []
+
+[contracts.stackads-token]
+path = "contracts/stackads-token.clar"
+
+[contracts.ad-registry]
+path = "contracts/ad-registry.clar"
+depends_on = ["stackads-token"]
+
+[contracts.staking]
+path = "contracts/staking.clar"
+depends_on = ["stackads-token"]
+
+[contracts.ad-treasury]
+path = "contracts/ad-treasury.clar"
+depends_on = ["stackads-token", "ad-registry"]
+
+[contracts.governance]
+path = "contracts/governance.clar"
+depends_on = ["stackads-token"]
+
+[contracts.vesting]
+path = "contracts/vesting.clar"
+depends_on = ["stackads-token"]
+
+[repl.analysis]
+passes = ["check_checker"]
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
