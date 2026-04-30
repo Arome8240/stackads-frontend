@@ -8,8 +8,10 @@ import {
   PauseCircle,
   PlayCircle,
   CloseCircle,
+  Monitor,
 } from "iconsax-react";
 import Toast from "@/components/dashboard/Toast";
+import EmptyState from "@/components/ui/EmptyState";
 import type { ToastType } from "@/components/dashboard/Toast";
 import { adUnits as initialUnits } from "@/lib/mock-data";
 import type { AdUnit } from "@/types";
@@ -195,114 +197,123 @@ export default function AdUnitsPage() {
         transition={{ duration: 0.4, delay: 0.1 }}
         className="glass rounded-2xl border border-white/8 overflow-hidden"
       >
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-white/8">
-                {[
-                  "Ad Unit",
-                  "Format",
-                  "Placement",
-                  "Status",
-                  "Impressions",
-                  "Earnings",
-                  "CTR",
-                  "Actions",
-                ].map((h) => (
-                  <th
-                    key={h}
-                    className="px-5 py-3.5 text-left text-xs font-medium text-white/30 uppercase tracking-wider whitespace-nowrap"
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {units.map((u, i) => (
-                <tr
-                  key={u.id}
-                  className={`border-b border-white/5 hover:bg-white/3 transition-colors ${i % 2 !== 0 ? "bg-white/1" : ""}`}
-                >
-                  <td className="px-5 py-4">
-                    <div className="font-medium text-white">{u.name}</div>
-                    <div className="text-xs text-white/30 mt-0.5">
-                      {u.size !== "N/A" ? u.size : ""}
-                    </div>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span className="text-xs px-2 py-1 rounded-lg bg-[#a855f7]/10 text-[#a855f7]">
-                      {u.format}
-                    </span>
-                  </td>
-                  <td className="px-5 py-4 text-white/50 text-xs max-w-[140px] truncate">
-                    {u.placement}
-                  </td>
-                  <td className="px-5 py-4">
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${u.status === "Active" ? "bg-[#4ade80]/10 text-[#4ade80] border-[#4ade80]/20" : "bg-[#f7931a]/10 text-[#f7931a] border-[#f7931a]/20"}`}
+        {units.length === 0 ? (
+          <EmptyState
+            icon={<Monitor size={28} color="#4ade80" variant="Bold" />}
+            title="No ad units yet"
+            description="Add your first ad unit to start serving ads and earning revenue."
+            action={{ label: "Add Ad Unit", onClick: () => setShowForm(true) }}
+          />
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-white/8">
+                  {[
+                    "Ad Unit",
+                    "Format",
+                    "Placement",
+                    "Status",
+                    "Impressions",
+                    "Earnings",
+                    "CTR",
+                    "Actions",
+                  ].map((h) => (
+                    <th
+                      key={h}
+                      className="px-5 py-3.5 text-left text-xs font-medium text-white/30 uppercase tracking-wider whitespace-nowrap"
                     >
-                      <span
-                        className={`w-1.5 h-1.5 rounded-full ${u.status === "Active" ? "bg-[#4ade80]" : "bg-[#f7931a]"}`}
-                      />
-                      {u.status}
-                    </span>
-                  </td>
-                  <td className="px-5 py-4 text-white/60">
-                    {u.impressions > 0
-                      ? `${(u.impressions / 1000).toFixed(0)}K`
-                      : "—"}
-                  </td>
-                  <td className="px-5 py-4 text-[#4ade80] font-semibold">
-                    {u.earnings > 0 ? `$${u.earnings.toFixed(2)}` : "—"}
-                  </td>
-                  <td className="px-5 py-4 text-[#22d3ee]">
-                    {u.ctr > 0 ? `${u.ctr}%` : "—"}
-                  </td>
-                  <td className="px-5 py-4">
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() =>
-                          setToast({
-                            message: "Loading unit details...",
-                            type: "info",
-                          })
-                        }
-                        className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#a855f7]/20 flex items-center justify-center transition-colors"
-                        title="View"
-                      >
-                        <Eye size={14} color="#a855f7" />
-                      </button>
-                      <button
-                        onClick={() =>
-                          setToast({
-                            message: "Opening editor...",
-                            type: "info",
-                          })
-                        }
-                        className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#22d3ee]/20 flex items-center justify-center transition-colors"
-                        title="Edit"
-                      >
-                        <Edit2 size={14} color="#22d3ee" />
-                      </button>
-                      <button
-                        onClick={() => toggleStatus(u.id)}
-                        className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#f7931a]/20 flex items-center justify-center transition-colors"
-                        title={u.status === "Active" ? "Pause" : "Resume"}
-                      >
-                        {u.status === "Active" ? (
-                          <PauseCircle size={14} color="#f7931a" />
-                        ) : (
-                          <PlayCircle size={14} color="#4ade80" />
-                        )}
-                      </button>
-                    </div>
-                  </td>
+                      {h}
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {units.map((u, i) => (
+                  <tr
+                    key={u.id}
+                    className={`border-b border-white/5 hover:bg-white/3 transition-colors ${i % 2 !== 0 ? "bg-white/1" : ""}`}
+                  >
+                    <td className="px-5 py-4">
+                      <div className="font-medium text-white">{u.name}</div>
+                      <div className="text-xs text-white/30 mt-0.5">
+                        {u.size !== "N/A" ? u.size : ""}
+                      </div>
+                    </td>
+                    <td className="px-5 py-4">
+                      <span className="text-xs px-2 py-1 rounded-lg bg-[#a855f7]/10 text-[#a855f7]">
+                        {u.format}
+                      </span>
+                    </td>
+                    <td className="px-5 py-4 text-white/50 text-xs max-w-[140px] truncate">
+                      {u.placement}
+                    </td>
+                    <td className="px-5 py-4">
+                      <span
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${u.status === "Active" ? "bg-[#4ade80]/10 text-[#4ade80] border-[#4ade80]/20" : "bg-[#f7931a]/10 text-[#f7931a] border-[#f7931a]/20"}`}
+                      >
+                        <span
+                          className={`w-1.5 h-1.5 rounded-full ${u.status === "Active" ? "bg-[#4ade80]" : "bg-[#f7931a]"}`}
+                        />
+                        {u.status}
+                      </span>
+                    </td>
+                    <td className="px-5 py-4 text-white/60">
+                      {u.impressions > 0
+                        ? `${(u.impressions / 1000).toFixed(0)}K`
+                        : "—"}
+                    </td>
+                    <td className="px-5 py-4 text-[#4ade80] font-semibold">
+                      {u.earnings > 0 ? `$${u.earnings.toFixed(2)}` : "—"}
+                    </td>
+                    <td className="px-5 py-4 text-[#22d3ee]">
+                      {u.ctr > 0 ? `${u.ctr}%` : "—"}
+                    </td>
+                    <td className="px-5 py-4">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() =>
+                            setToast({
+                              message: "Loading unit details...",
+                              type: "info",
+                            })
+                          }
+                          className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#a855f7]/20 flex items-center justify-center transition-colors"
+                          title="View"
+                        >
+                          <Eye size={14} color="#a855f7" />
+                        </button>
+                        <button
+                          onClick={() =>
+                            setToast({
+                              message: "Opening editor...",
+                              type: "info",
+                            })
+                          }
+                          className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#22d3ee]/20 flex items-center justify-center transition-colors"
+                          title="Edit"
+                        >
+                          <Edit2 size={14} color="#22d3ee" />
+                        </button>
+                        <button
+                          onClick={() => toggleStatus(u.id)}
+                          className="w-8 h-8 rounded-lg bg-white/5 hover:bg-[#f7931a]/20 flex items-center justify-center transition-colors"
+                          title={u.status === "Active" ? "Pause" : "Resume"}
+                        >
+                          {u.status === "Active" ? (
+                            <PauseCircle size={14} color="#f7931a" />
+                          ) : (
+                            <PlayCircle size={14} color="#4ade80" />
+                          )}
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </motion.div>
 
       {toast && (

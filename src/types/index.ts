@@ -74,6 +74,7 @@ export interface PublisherAnalyticsPoint {
   clicks: number;
   earnings: number;
   ecpm: number;
+  [key: string]: string | number;
 }
 
 export interface PublisherMetrics {

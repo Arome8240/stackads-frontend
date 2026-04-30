@@ -6,9 +6,11 @@ import {
   WalletMoney,
   ArrowCircleDown,
   TrendUp,
+  Receipt,
 } from "iconsax-react";
 import PerformanceChart from "@/components/dashboard/PerformanceChart";
 import Toast from "@/components/dashboard/Toast";
+import EmptyState from "@/components/ui/EmptyState";
 import type { ToastType } from "@/components/dashboard/Toast";
 import {
   earningsHistory,
@@ -206,47 +208,59 @@ export default function EarningsPage() {
             {earningsHistory.length} records
           </p>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-white/5">
-                {["Date", "Campaign", "Ad Unit", "Impressions", "Amount"].map(
-                  (h) => (
-                    <th
-                      key={h}
-                      className="px-6 py-3 text-left text-xs font-medium text-white/30 uppercase tracking-wider whitespace-nowrap"
-                    >
-                      {h}
-                    </th>
-                  ),
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              {earningsHistory.map((r, i) => (
-                <tr
-                  key={r.id}
-                  className={`border-b border-white/5 hover:bg-white/3 transition-colors ${i % 2 !== 0 ? "bg-white/1" : ""}`}
-                >
-                  <td className="px-6 py-4 text-white/40 whitespace-nowrap">
-                    {r.date}
-                  </td>
-                  <td className="px-6 py-4 text-white/70">{r.campaign}</td>
-                  <td className="px-6 py-4 text-white/50">{r.adUnit}</td>
-                  <td className="px-6 py-4 text-white/60">
-                    {r.impressions.toLocaleString()}
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="inline-flex items-center gap-1.5 text-[#4ade80] font-semibold">
-                      <DollarCircle size={14} color="#4ade80" variant="Bold" />
-                      {r.amount.toFixed(2)}
-                    </span>
-                  </td>
+        {earningsHistory.length === 0 ? (
+          <EmptyState
+            icon={<Receipt size={28} color="#4ade80" variant="Bold" />}
+            title="No earnings yet"
+            description="Your earnings will appear here once ads start serving on your units."
+          />
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-white/5">
+                  {["Date", "Campaign", "Ad Unit", "Impressions", "Amount"].map(
+                    (h) => (
+                      <th
+                        key={h}
+                        className="px-6 py-3 text-left text-xs font-medium text-white/30 uppercase tracking-wider whitespace-nowrap"
+                      >
+                        {h}
+                      </th>
+                    ),
+                  )}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {earningsHistory.map((r, i) => (
+                  <tr
+                    key={r.id}
+                    className={`border-b border-white/5 hover:bg-white/3 transition-colors ${i % 2 !== 0 ? "bg-white/1" : ""}`}
+                  >
+                    <td className="px-6 py-4 text-white/40 whitespace-nowrap">
+                      {r.date}
+                    </td>
+                    <td className="px-6 py-4 text-white/70">{r.campaign}</td>
+                    <td className="px-6 py-4 text-white/50">{r.adUnit}</td>
+                    <td className="px-6 py-4 text-white/60">
+                      {r.impressions.toLocaleString()}
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="inline-flex items-center gap-1.5 text-[#4ade80] font-semibold">
+                        <DollarCircle
+                          size={14}
+                          color="#4ade80"
+                          variant="Bold"
+                        />
+                        {r.amount.toFixed(2)}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </motion.div>
 
       {toast && (

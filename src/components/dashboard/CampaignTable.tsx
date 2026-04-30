@@ -1,6 +1,7 @@
 "use client";
-import { Eye, Edit2, PauseCircle } from "iconsax-react";
+import { Eye, Edit2, PauseCircle, Chart } from "iconsax-react";
 import StatusBadge from "./StatusBadge";
+import EmptyState from "@/components/ui/EmptyState";
 import type { Campaign } from "@/types";
 
 interface CampaignTableProps {
@@ -14,9 +15,11 @@ export default function CampaignTable({
 }: CampaignTableProps) {
   if (campaigns.length === 0) {
     return (
-      <div className="px-5 py-16 text-center text-white/30 text-sm">
-        No campaigns found.
-      </div>
+      <EmptyState
+        icon={<Chart size={28} color="#f7931a" variant="Bold" />}
+        title="No campaigns found"
+        description="Try adjusting your search, or create a new campaign to get started."
+      />
     );
   }
 
@@ -61,9 +64,7 @@ export default function CampaignTable({
                 ${c.budget.toLocaleString()}
               </td>
               <td className="px-5 py-4">
-                <div className="text-white/60">
-                  ${c.spent.toLocaleString()}
-                </div>
+                <div className="text-white/60">${c.spent.toLocaleString()}</div>
                 <div className="mt-1 h-1 w-20 rounded-full bg-white/10 overflow-hidden">
                   <div
                     className="h-full rounded-full bg-[#f7931a]"
@@ -79,9 +80,7 @@ export default function CampaignTable({
               <td className="px-5 py-4 text-white/60">
                 {(c.clicks / 1000).toFixed(1)}K
               </td>
-              <td className="px-5 py-4 text-[#4ade80] font-medium">
-                {c.ctr}%
-              </td>
+              <td className="px-5 py-4 text-[#4ade80] font-medium">{c.ctr}%</td>
               <td className="px-5 py-4">
                 <div className="flex items-center gap-2">
                   <button
