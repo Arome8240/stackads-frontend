@@ -1,9 +1,12 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { DollarCircle, Eye, MouseCircle, ChartCircle } from "iconsax-react";
 import Link from "next/link";
 import MetricCard from "@/components/dashboard/MetricCard";
 import PerformanceChart from "@/components/dashboard/PerformanceChart";
+import SkeletonCard from "@/components/ui/SkeletonCard";
+import SkeletonTable from "@/components/ui/SkeletonTable";
 import {
   publisherMetrics,
   publisherAnalytics,
@@ -47,6 +50,23 @@ const metrics = [
 ];
 
 export default function PublisherOverviewPage() {
+  const [loading] = useState(false);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
+        <div className="glass rounded-2xl border border-white/8 overflow-hidden">
+          <SkeletonTable rows={5} cols={5} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-6 max-w-7xl mx-auto">
       {/* Metric cards */}
