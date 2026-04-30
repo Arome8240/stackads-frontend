@@ -12,7 +12,9 @@ import {
 import type { AnalyticsPoint } from "@/types";
 
 interface Props {
-  data: AnalyticsPoint[];
+  // Accept any array of objects so both AnalyticsPoint and PublisherAnalyticsPoint work
+  data: Record<string, string | number>[];
+  lines: { key: string; color: string; label: string }[];
   lines: { key: keyof AnalyticsPoint; color: string; label: string }[];
   height?: number;
 }
