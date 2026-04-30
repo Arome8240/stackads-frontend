@@ -81,10 +81,10 @@ Commit: `feat: add onboarding flow for advertisers and publishers`
 
 ## Progress
 
-- [ ] Task 1 — Empty State Component
-- [ ] Task 2 — Loading Skeleton Component
-- [ ] Task 3 — Connect Wallet UI
-- [ ] Task 4 — Real On-Chain Wallet Balance
-- [ ] Task 5 — 404 Page
-- [ ] Task 6 — Error Boundary Page
-- [ ] Task 7 — Onboarding Flow
+- [x] Task 1 — Empty State Component
+- [x] Task 2 — Loading Skeleton Component
+- [x] Task 3 — Connect Wallet UI
+- [x] Task 4 — Real On-Chain Wallet Balance
+- [x] Task 5 — 404 Page
+- [x] Task 6 — Error Boundary Page
+- [x] Task 7 — Onboarding Flow
