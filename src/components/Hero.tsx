@@ -45,7 +45,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4"
         >
           <a
-            href="#"
+            href="/onboarding"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-linear-to-r from-[#f7931a] to-[#e8820a] text-black font-semibold hover:opacity-90 transition-opacity orange-glow"
           >
             Start Earning
