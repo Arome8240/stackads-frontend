@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import ErrorView from "@/components/ui/ErrorView";
 
-export default function DashboardError({
+export default function GlobalError({
   error,
   unstable_retry,
 }: {
