@@ -14,6 +14,7 @@ import {
   Setting2,
   LogoutCurve,
 } from "iconsax-react";
+import ConnectWalletButton from "@/components/ui/ConnectWalletButton";
 
 const navItems = [
   { label: "Overview", href: "/publisher", icon: <Home2 size={20} /> },
@@ -75,12 +76,7 @@ export default function PublisherNav() {
             <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#4ade80]" />
           </button>
           <div className="flex items-center gap-2 pl-2 border-l border-white/10">
-            <div className="w-8 h-8 rounded-full bg-linear-to-br from-[#4ade80] to-[#22d3ee] flex items-center justify-center text-xs font-bold text-black">
-              P
-            </div>
-            <span className="hidden sm:block text-sm font-medium text-white/70">
-              Publisher
-            </span>
+            <ConnectWalletButton />
           </div>
         </div>
       </header>
