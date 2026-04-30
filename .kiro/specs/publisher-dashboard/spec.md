@@ -125,12 +125,12 @@ Extend `src/lib/mock-data.ts` with:
 
 ## Tasks
 
-- [ ] Extend `src/lib/mock-data.ts` with publisher mock data
-- [ ] Create `src/components/dashboard/PublisherSidebar.tsx`
-- [ ] Create `src/app/publisher/layout.tsx`
-- [ ] Build `src/app/publisher/page.tsx` — Overview
-- [ ] Build `src/app/publisher/ad-units/page.tsx` — Ad Units
-- [ ] Build `src/app/publisher/analytics/page.tsx` — Analytics
-- [ ] Build `src/app/publisher/earnings/page.tsx` — Earnings
-- [ ] Build `src/app/publisher/settings/page.tsx` — Settings
-- [ ] Run `getDiagnostics` on all new files and fix all errors/warnings
+- [x] Extend `src/lib/mock-data.ts` with publisher mock data
+- [x] Create `src/components/dashboard/PublisherSidebar.tsx`
+- [x] Create `src/app/publisher/layout.tsx`
+- [x] Build `src/app/publisher/page.tsx` — Overview
+- [x] Build `src/app/publisher/ad-units/page.tsx` — Ad Units
+- [x] Build `src/app/publisher/analytics/page.tsx` — Analytics
+- [x] Build `src/app/publisher/earnings/page.tsx` — Earnings
+- [x] Build `src/app/publisher/settings/page.tsx` — Settings
+- [x] Run `getDiagnostics` on all new files and fix all errors/warnings
